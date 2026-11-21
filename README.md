@@ -156,6 +156,17 @@ dotnet run
 
 High scores are saved to `highscores.txt` next to the game.
 
+<details>
+<summary><b>🪟 Windows troubleshooting</b> (<code>DllNotFoundException: Unable to load DLL 'SplashKit'</code>)</summary>
+
+The `SplashKit` NuGet package contains only the C# bindings. The native engine (`SplashKit.dll` + SDL2 libraries) comes from SplashKit's installer:
+
+1. **"The specified module could not be found"** means the native library isn't installed. Install SplashKit (`skm global install`), or copy the DLLs from [`skm/lib/win64`](https://github.com/splashkit/skm/tree/master/lib/win64) next to `MiningMaze.exe` in `bin/Release/net8.0/`.
+2. **"The specified procedure could not be found"** means the `libstdc++-6.dll` bundled in `skm/lib/win64` is older than `SplashKit.dll` needs. Replace `libstdc++-6.dll`, `libgcc_s_seh-1.dll` and `libwinpthread-1.dll` with the ones from a current **MinGW-w64 UCRT** toolchain: MSYS2 `ucrt64/bin`, or a [WinLibs](https://winlibs.com/) UCRT build.
+
+Tested on Windows 11 with .NET SDK 8.0.428, SplashKit 1.3.0, and the GCC 16.2 UCRT runtime.
+</details>
+
 ## 🧪 Tests
 
 `tests/LogicTests.cs` checks the game rules without opening a window. It also runs a **bot that plays all three levels** on random mazes, as a check that every level can be won:
