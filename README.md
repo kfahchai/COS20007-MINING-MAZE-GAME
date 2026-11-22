@@ -149,7 +149,7 @@ Each game builds a new maze. A **depth-first recursive backtracker** (with an ex
 **Requirements:** the [.NET 8 SDK](https://dotnet.microsoft.com/download) and [SplashKit](https://splashkit.io/installation/). The project uses the `SplashKit` NuGet package, and SplashKit's installer sets up its native library.
 
 ```bash
-git clone https://github.com/kfahchai-netizen/COS20007-MINING-MAZE-GAME.git
+git clone https://github.com/kfahchai/COS20007-MINING-MAZE-GAME.git
 cd COS20007-MINING-MAZE-GAME
 dotnet run
 ```
